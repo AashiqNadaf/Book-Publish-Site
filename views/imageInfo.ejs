@@ -1,0 +1,17 @@
+<%- include ("./partials/header") %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">How to upload image from google drive</div>
+    <ol>
+        <li>Upload the image to your drive.</li>
+        <li>Select the option and right click on it.</li>
+        <li>In pop up menu select Share option.</li>
+        <li>Now copy the link from the ‘Get Shared Link’ option.</li>
+        <li>The link would look like this <b>https://drive.google.com/file/d/14hz3ySPn-zBd4Tu3NtY1F05LSGdFfWvp/view?usp=sharing</b></li>
+        <li>Now copy the ID from the link; in the above link, the id is: <b>14hz3ySPn-zBd4Tu3NtY1F05LSGdFfWvp</b></li>
+        <li>Replace the id as shown below link: <p>https://drive.google.com/thumbnail?id=14hz3ySPn-zBd4Tu3NtY1F05LSGdFfWvp</p></li>
+        <li>This new link https://drive.google.com/thumbnail?id=14hz3ySPn-zBd4Tu3NtY1F05LSGdFfWvp can be given in the image input and the google drive image will be shown.</li>
+    </ol>
+</div>
+
+<%- include ("./partials/footer") %>

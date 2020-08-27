@@ -1,0 +1,39 @@
+<%- include ("../partials/header") %>
+
+<div class="container">
+	<div class="row">
+		<h1 style="text-align: center;">Edit Book</h1>
+		<div style="width: 70%; margin: 25px auto;">
+			<form action="/books/<%= book._id %>?_method=PUT" method="POST">
+				<div class="form-group">
+					<label>Book Title</label>
+					<input class="form-control" type="text" name="book[name]" value="<%= book.name %>">
+				</div>
+				<div class="form-group">
+					<label>Cover Image</label><div style="float: right;"><a href="/imgInfo" target="_blank">how to upload image</a></div>
+					<input class="form-control" type="text" name="book[coverImage]" value="<%= book.coverImage %>">
+                </div>
+                <div class="form-group">
+					<label>Book Link </label>
+					<input class="form-control" type="text" name="book[doc]" value="<%= book.doc %>">
+				</div>
+				<div class="form-group">
+					<label>Price </label>
+					<input class="form-control" type="text" name="book[price]" value="<%= book.price %>">
+				</div>
+				<div class="field">
+                    <label>Book Description</label>
+                    <textarea class="form-control" rows="10" name="book[description]"><%= book.description %></textarea>
+                </div>
+				<div class="form-group" style="padding-top: 10px;">
+					<button class="btn btn-lg btn-primary btn-block">Submit</button>
+				</div>
+				</form>
+			<a href="/books">Go back</a>
+		</div>
+		
+	</div>
+</div>
+
+
+<%- include ("../partials/footer") %>

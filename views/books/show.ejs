@@ -1,0 +1,33 @@
+<%- include ("../partials/header") %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="thumbnail">
+                    <% if(!book.coverImage) {%>
+                        <img src="https://webmaster.ypsa.org/wp-content/uploads/2012/08/no_thumb.jpg">
+                    <% }else { %>
+                        <img style="height: 500px; width: 500px;" class="img-responsive" src="<%= book.coverImage %>">
+                    <% } %>
+                    <div class="caption-full">
+                        <h4 class="pull-right">Price <%= book.price %>₹</h4>
+                        <h4><a><%=  book.name %></a></h4>
+                        <p><i>Submitted by <%= book.author.username %></i></p>
+                        <p><em>Published on: <%= book.created.toDateString() %></em></p>
+                        <p><%- book.description %></p>
+                        <a class="ui floated primary button" href="<%= book.doc %>" target="_blank"> Click to view </a>
+                        <div style="float: right;">
+                            <% if(currentUser && book.author.id.equals(currentUser._id)|| currentUser && currentUser.isAdmin){ %>
+                                <a href="/books/<%= book._id %>/edit" class="btn btn-warning btn-xs">Edit</a>
+                                <form id="deleteForm" action="/books/<%= book._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-danger btn-xs">DELETE</button>
+                                </form>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="/books">Back to all books</a>
+    </div>
+<%- include ("../partials/footer") %>

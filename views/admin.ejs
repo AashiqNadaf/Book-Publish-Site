@@ -1,0 +1,53 @@
+<%- include ("./partials/header") %>
+
+
+    <div class="container">
+    <table class="ui very basic collapsing celled table">
+        <thead>
+            <tr><th>Users</th>
+                <th>Delete</th>
+                <th>Allow Publish</th>
+             </tr>
+        </thead>
+
+        <% aUser.forEach(function(users){ %>
+            <% if(currentUser.username != users.username){ %>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h4 class="ui image header">
+                                <% if(!users.profPic) {%>
+                                    <img src="https://webmaster.ypsa.org/wp-content/uploads/2012/08/no_thumb.jpg" class="ui mini rounded image">
+                                <% }else { %>
+                                    <img src="<%= users.profPic %>" class="ui mini rounded image">
+                                <% } %>
+                                <div class="content">
+                                    <%= users.username %>
+                                    <div class="sub header"><%= users.fullName %></div>
+                                </div>
+                            </h4>
+                        </td>
+                        <td>
+                            <form id="deleteForm" action="/admin/<%= users._id %>?_method=DELETE" method="POST">
+                                <input type="submit" class="mini ui red basic button" value="Delete">
+                            </form>
+                        </td>
+                        <td>
+                            <% if(users.canPub) {%>
+                                <form action="/admin/<%= users._id %>/cantpub" method="POST">
+                                    <input type="submit" class="mini ui red basic button" value="Remove">
+                                </form>
+                            <% } else{ %>
+                                <form action="/admin/<%= users._id %>/canpub" method="POST">
+                                    <input type="submit" class="mini ui green basic button" value="Allow">
+                                </form>
+                            <% } %>
+                        </td>
+                    </tr>
+                </tbody>
+            <% } %>
+        <% }); %>
+    </table>
+    </div>
+
+<%- include ("./partials/footer") %>
